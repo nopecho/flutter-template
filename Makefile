@@ -17,6 +17,9 @@ clean-flutter:
 
 clean: clean-flutter
 
+create:
+	flutter create ./
+
 build:
 
 default:
