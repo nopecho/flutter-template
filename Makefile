@@ -22,5 +22,13 @@ else
 endif
 
 build:
+ifdef TARGET
+	@flutter build $(TARGET)
+else
+	@echo "build TARGET must be not empty! >> make build TARGET=[ios,apk,web]"
+endif
+
+code:
+	flutter pub run build_runner build
 
 default: gen
