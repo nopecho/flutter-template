@@ -29,6 +29,6 @@ else
 endif
 
 code:
-	flutter pub run build_runner build
+	flutter pub run build_runner build watch
 
 default: gen

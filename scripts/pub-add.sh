@@ -21,8 +21,11 @@ flutter pub add dio && \
 flutter pub add retrofit && \
 flutter pub add go_router && \
 flutter pub add flutter_bloc && \
+flutter pub add injectable && \
+flutter pub add get_it && \
 
+flutter pub add dev:injectable_generator && \
 flutter pub add dev:retrofit_generator && \
-flutter pub add dev:build_runner && \
 flutter pub add dev:json_serializable && \
-flutter pub add dev:freezed
+flutter pub add dev:freezed && \
+flutter pub add dev:build_runner
