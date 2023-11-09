@@ -1,13 +1,9 @@
-TARGET ?=
-NOW := $(shell date +"%Y%m%dT%H%M%S")
-TAG ?= $(NOW)
-
-SCRIPTS_PATH := $(CURDIR)/scripts
-IOS_PATH := $(CURDIR)/ios
-ANDROID_PATH := $(CURDIR)/android
-WEB_PATH := $(CURDIR)/web
-
 .PHONY: build
+
+DIR_NAME := $(notdir $(CURDIR))
+SCRIPTS_PATH := $(CURDIR)/scripts
+LOCK_FILE := pubspec.lock
+FILE_EXISTS := $(shell test -f $(LOCK_FILE) && echo "lock")
 
 clean-ios:
 	$(SCRIPTS_PATH)/ios-clean.sh
@@ -15,11 +11,14 @@ clean-ios:
 clean-flutter:
 	$(SCRIPTS_PATH)/pub-clean.sh
 
-clean: clean-flutter
-
-create:
-	flutter create ./
+gen:
+ifeq ($(FILE_EXISTS), lock)
+	$(error $(LOCK_FILE) exists.)
+else
+	@flutter create ./ --org com.nopecho && \
+	flutter pub upgrade --major-versions
+endif
 
 build:
 
-default:
+default: gen
