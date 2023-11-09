@@ -16,6 +16,7 @@ ifeq ($(FILE_EXISTS), lock)
 	$(error $(LOCK_FILE) exists.)
 else
 	@flutter create ./ --org com.nopecho && \
+	SCRIPTS_PATH/pub-add.sh && \
 	flutter pub upgrade --major-versions
 endif
 
